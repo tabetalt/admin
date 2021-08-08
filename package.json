@@ -2,7 +2,38 @@
   "name": "admin",
   "version": "0.1.0",
   "private": true,
+  "repository": "github:tabetalt/backoffice",
   "license": "Apache-2.0",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --passWithNoTests",
+    "test:ci": "yarn test --watchAll=false",
+    "lint": "eslint \"src/**/*.ts{,x}\"",
+    "eject": "react-scripts eject",
+    "pretty": "prettier --write ./src",
+    "generate": "graphql-codegen --config codegen.yml"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint && yarn test:ci"
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
   "dependencies": {
     "@apollo/client": "^3.2.5",
     "@tabetalt/kit": "^1.20.0",
@@ -35,31 +66,6 @@
     "typescript": "^4.0.2",
     "yup": "^0.29.3"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --passWithNoTests",
-    "test:ci": "yarn test --watchAll=false",
-    "lint": "eslint \"src/**/*.ts{,x}\"",
-    "eject": "react-scripts eject",
-    "pretty": "prettier --write ./src",
-    "generate": "graphql-codegen --config codegen.yml"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
   "devDependencies": {
     "@graphql-codegen/cli": "1.20.0",
     "@graphql-codegen/fragment-matcher": "2.0.1",
@@ -76,10 +82,5 @@
     "husky": "^4.3.6",
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn lint && yarn test:ci"
-    }
   }
 }
